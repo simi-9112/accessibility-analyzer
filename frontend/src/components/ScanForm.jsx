@@ -1,18 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
-
-const isValidUrl = (url) => {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-const ScanForm = ({ onResult,setLoading }) => {
+const ScanForm = ({ onResult, setLoading }) => {  // <-- accept setLoading
   const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleScan = async () => {
@@ -47,14 +34,11 @@ const ScanForm = ({ onResult,setLoading }) => {
       <button
         onClick={handleScan}
         className="bg-blue-600 text-white px-4 py-2 rounded"
-        disabled={loading}
       >
-        {loading ? "Scanning..." : "Scan Website"}
+        Scan Website
       </button>
 
       {error && <p className="mt-2 text-red-600">{error}</p>}
     </div>
   );
 };
-
-export default ScanForm;
